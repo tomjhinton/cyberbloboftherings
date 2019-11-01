@@ -1,0 +1,14 @@
+#score {
+    position: absolute;
+    display: block;
+    z-index: 99;
+    left: 10%;
+    top: 10%;
+    background: rgba(0, 0, 0, 0);
+    color: rgba(255, 0, 0, 0.5);
+    font-size: 5em;
+    }
+
+canvas{
+  position:fixed; left:0; top:0; z-index:-1;
+}

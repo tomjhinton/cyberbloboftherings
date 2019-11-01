@@ -12,12 +12,13 @@ const renderer = new THREE.WebGLRenderer()
 renderer.setSize( window.innerWidth, window.innerHeight )
 document.body.appendChild( renderer.domElement )
 
+
 var camera = new THREE.PerspectiveCamera( 45, window.innerWidth/window.innerHeight, 0.1, 1000 )
 camera.position.z = 30
 
 
-
-
+let  score = 0
+document.getElementById("score").innerHTML = score
 
 
 const material = new THREE.MeshPhongMaterial( { color: 0x000FF0, specular: 0xf22fff , shininess: 100, side: THREE.DoubleSide } )
@@ -95,13 +96,14 @@ cube.rotation.z -= 0.02;
 
 if(cube.position.z < torus.position.z -10){
 
-
+  score += 10
   torus.position.z -=  45
   torus.position.x -=  9
 }
 
 camera.position.z -= speed
 
+document.getElementById("score").innerHTML = score
 }
 
 function animate() {
