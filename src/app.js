@@ -139,10 +139,10 @@ const geometryG = new THREE.Geometry(),
   geometryG2 = new THREE.Geometry(),
   materialG = new THREE.LineBasicMaterial({
     color: 'green'
-}),
+  }),
   materialG2 = new THREE.LineBasicMaterial({
     color: 'cyan'
-})
+  })
 
 
 
@@ -235,8 +235,8 @@ function checkKey(e) {
 
   }else if (e.keyCode == '40') {
     // down arrow
-      cube.position.y -= 0.4
-      camera.position.y -= 0.4
+    cube.position.y -= 0.4
+    camera.position.y -= 0.4
 
 
     new Tween(cube)
@@ -327,7 +327,7 @@ function checkKey(e) {
     camera.position.x = 0
     camera.position.y = 0
     speed = 0.5
-		if(score > highScore){
+    if(score > highScore){
       highScore = score
       window.localStorage.setItem('highScore', `${highScore}`)
     }
@@ -356,14 +356,14 @@ let speed = 0.5
 var update = function() {
 
 
-  raycaster.setFromCamera( mouse, camera );
+  raycaster.setFromCamera( mouse, camera )
 
 	// calculate objects intersecting the picking ray
-	var intersects = raycaster.intersectObjects( scene.children );
+	var intersects = raycaster.intersectObjects( scene.children )
 
 	// for ( var i = 0; i < intersects.length; i++ ) {
 	//
-	// 	intersects[ i ].object.material.color.set( 0xff0000 );
+	// 	intersects[ i ].object.material.color.set( 0xff0000 )
 	//
 //	}
   cube.position.x = mouse.x *50
