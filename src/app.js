@@ -26,24 +26,41 @@ function onMouseMove( event ) {
 
 import Tone from 'tone'
 
-const synthA =  new Tone.PluckSynth().toMaster()
+const synthA =  new Tone.AMSynth().toMaster()
+
+synthA.attackCurve =  0.01
 
 const notes = ['E4','F4','G4','A4','D4','E3','F3','G3','A3','D3']
 
+const notesHigh = ['E5','F5','G5','A5','D5','E6','F6','G6','A6','D6']
+
+const notesLow = ['E2','F2','G2','A2','D2','E3','F3','G3','A3','D3']
+
+var synthC = new Tone.DuoSynth().toMaster()
+synthC.attackCurve =  1.1
 
 var synthB = new Tone.DuoSynth().toMaster()
+synthB.attackCurve =  0.1
 
 var freeverb = new Tone.Freeverb().toMaster()
-synthA.connect(freeverb)
+freeverb.dampening.value = 25
+freeverb.roomSize.value = 1.2
+synthC.connect(freeverb)
 
 
 
 
 var pattern = new Tone.Pattern(function(time, note){
-  synthB.triggerAttackRelease(note, 0.1)
+  synthC.triggerAttackRelease(note, 0.03)
 }, notes, 'random')
 
+
+var pattern2 = new Tone.Pattern(function(time, note){
+  synthB.triggerAttackRelease(note, 0.01)
+}, notesLow, 'random')
+
 pattern.start(0)
+pattern2.start(0)
 
 Tone.Transport.start()
 
@@ -342,7 +359,7 @@ function checkKey(e) {
 }
 
 console.log(model)
-const posChange = [10,-10]
+const posChange = [10,-10,5,-5,8,-8]
 
 camera.position.z = 30
 
@@ -366,10 +383,12 @@ var update = function() {
 	// 	intersects[ i ].object.material.color.set( 0xff0000 )
 	//
 //	}
-  cube.position.x = mouse.x *50
-  cube.position.y = mouse.y  *50
-  camera.position.x = mouse.x *50
-  camera.position.y = mouse.y  *50
+
+
+  cube.position.x = mouse.x *100
+  cube.position.y = mouse.y  *100
+  camera.position.x = mouse.x *100
+  camera.position.y = mouse.y  *100
 
 
   if(model !== undefined){
@@ -392,10 +411,10 @@ var update = function() {
     speed+=0.05
     torus.position.z -=  85
 
-    torus.position.x +=  posChange[Math.floor(Math.random()*2)]
-    torus.position.y +=  posChange[Math.floor(Math.random()*2)]
+    torus.position.x +=  posChange[Math.floor(Math.random()*5)]
+    torus.position.y +=  posChange[Math.floor(Math.random()*5)]
 
-    synthA.triggerAttackRelease(notes[Math.floor(Math.random() * 9)], 2)
+    synthA.triggerAttackRelease(notesLow[Math.floor(Math.random()*9)],1)
 
   }
 
