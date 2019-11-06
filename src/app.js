@@ -353,6 +353,7 @@ function checkKey(e) {
 
     score = 0
     document.getElementById('over').innerHTML = ''
+    document.getElementById('reset').innerHTML = ''
 
 
   }
@@ -420,6 +421,7 @@ var update = function() {
 
   if(cube.position.z < torus.position.z -20){
     document.getElementById('over').innerHTML = 'GAME OVER'
+    document.getElementById('reset').innerHTML = 'R TO RESET'
   }
 
   var time = performance.now() * 0.005
