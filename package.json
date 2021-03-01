@@ -23,7 +23,7 @@
     "html-webpack-plugin": "^3.2.0",
     "perlin": "^1.0.0",
     "style-loader": "^1.0.0",
-    "three": "^0.110.0",
+    "three": "^0.125.0",
     "tone": "^13.8.25",
     "tween": "^0.9.0",
     "webpack": "^4.41.2",
